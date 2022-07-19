@@ -1,16 +1,20 @@
 # importamos el paquete de sockets
-import socket
+import socket, pickle
 
 from os import system
 import sys
 import threading
 from time import sleep
 
+from employee import Employee
+
 # paquete de tablas que usaremos para almacenar y mostrar los datos
 from prettytable import PrettyTable
 table = PrettyTable()
 # Columnas
 table.field_names = ["Cédula", "Nombre", "Horas trabajadas", "Valor por horas", "Deducción de porcentaje"]
+
+employees = [] # <- Lista en la que se guardaran los trabajadores, la que se enviara al cliente
 
 # Creamos un seridor de sockets UDP
 # que con el servidor
@@ -48,6 +52,10 @@ def addEmployee():
 	valor_por_hora = input("Ingrese el valor por horas: ")
 	deduccion_porcentaje = input("Ingrese el porcentaje de deducción: ")
 
+	employee = Employee(cedula, nombre, horas_trabajadas, valor_por_hora, deduccion_porcentaje)
+
+	employees.append(employee)
+
 	table.add_row([cedula, nombre, horas_trabajadas, valor_por_hora, deduccion_porcentaje])
 
 	print("Trabajador agregado con exito...")
@@ -58,7 +66,8 @@ def listenClients():
 	print("Listening client petitions...")
 	while True:
 		message, address = server.recvfrom(1024)
-		server.sendto(table.get_string().encode("utf-8"), address)
+		data_string = pickle.dumps(employees)
+		server.sendto(data_string, address)
 
 def menu():
 	while True:
