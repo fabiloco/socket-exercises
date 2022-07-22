@@ -3,11 +3,11 @@
 ## intrucciones para ejecutar el ejercicio
 - Ejecutar el servidor con el siguiente comando:
 ```
-	python server.py
+python server.py
 ```
 - Una vez el servidor este iniciado y este escuchando solicitudes, debe ejecutar el cliente con el siguiente comando:
 ```
-	python client.py
+python client.py
 ```
 - Inicie la captura de Wireshark en modo "adapter for loopback traffic".
 - Una vez ejectuado el cliente, debe ingresar el número de equipos que desea inscribir (entre 10 y 20) y seguido a eso, ingresar el nombre de cada uno de los equipos.
