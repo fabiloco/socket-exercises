@@ -9,6 +9,6 @@
 ```
 	python client.py
 ```
-- Inicie la captura de Wireshark.
+- Inicie la captura de Wireshark en modo "adapter for loopback traffic".
 - Una vez ejectuado el cliente, debe ingresar el número de equipos que desea inscribir (entre 10 y 20) y seguido a eso, ingresar el nombre de cada uno de los equipos.
 - Cuando haya mandado todos los equipos, espere a que se calcule el ganador, y seguido a eso, termine la ejecución de Wireshark.
