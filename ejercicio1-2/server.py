@@ -39,7 +39,7 @@ server.bind(("localhost", 9000))
 
 def showEmployees():
 	system("cls")
-	print(table)
+	print(table.get_string(sortby="Cédula"))
 	input("\nPresione enter para volver al menu:>_ ")
 
 def addEmployee():
