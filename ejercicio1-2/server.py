@@ -84,6 +84,7 @@ def menu():
 			showEmployees()
 		elif (choice == "q"):
 			print("Abortando el programa...")
+			server.close()
 			sys.exit()
 		else:
 			print("Opción invalida, por favor intentelo nuevamente")

@@ -13,7 +13,7 @@ client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 table = PrettyTable()
 # Columnas
-table.field_names = ["Cédula", "Nombre", "Horas trabajadas", "Valor por horas", "Deducción de porcentaje"]
+table.field_names = ["Cédula", "Nombre", "Salario", "Deducción de porcentaje"]
 
 
 client.sendto("Hello server".encode("utf-8"), ("localhost", 9000))
@@ -22,6 +22,6 @@ client.sendto("Hello server".encode("utf-8"), ("localhost", 9000))
 employees = pickle.loads(encoded_message)
 
 for employee in employees:
-	table.add_row([employee.id, employee.name, employee.hours_worked, employee.val_per_hour, employee.deduction_per])
+	table.add_row([employee.id, employee.name, int(employee.val_per_hour) * int(employee.hours_worked), employee.deduction_per])
 
 print(table)
