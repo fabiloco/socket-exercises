@@ -15,3 +15,4 @@
 	python client.py
 ```
 - Una vez mostrada la tabla de los empleados, puede detener la captura de Wireshark para analizar las tramas.
+- Puede filtrar las capturas del Wireshark por "tcp" para encontrar las muestras más facilmente.
