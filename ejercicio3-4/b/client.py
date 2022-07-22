@@ -16,13 +16,12 @@ client.connect(("localhost", 9000))
 
 teams = []
 
-def startChampionship():
+def start_championship():
 	print("Ingrese cuantos equipos desea inscribir")
 	N_TEAMS = int(input(">_ "))
 	if(N_TEAMS < 10 or N_TEAMS > 20):
 		print("El número de equipos debe estar por debajo de 20 y por arriba de 10")
 		return
-
 
 	i = 0
 	while i < N_TEAMS:
@@ -32,15 +31,14 @@ def startChampionship():
 		teams.append(new_team)
 		i+=1
 
-def sendTeamToServer():
+def send_team_to_server():
 	data_string = pickle.dumps(teams)
 	client.send(data_string)
 
-startChampionship()
-sendTeamToServer()
+def show_champion():
+	champion = client.recv(1024).decode("utf-8")
+	print(f"El equipo ganador es {champion}!")
 
-# client.send("Hello server".encode("utf-8"))
-# print(client.recv(1024).decode("utf-8"))
-
-# client.send("Bye".encode("utf-8"))
-# print(client.recv(1024).decode("utf-8"))
+start_championship()
+send_team_to_server()
+show_champion()

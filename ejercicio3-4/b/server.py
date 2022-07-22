@@ -1,4 +1,4 @@
-from team import Team
+from time import sleep
 
 import random
 
@@ -52,27 +52,15 @@ def final(team1, team2):
 while True:
 	teams = []
 
-	#print("Esperando que un equipo se inscriba")
-	#client, address = server.accept()
+	print("Esperando que los equipos se inscriban..")
+	client, address = server.accept()
+	print("Cliente recibido! Esperando inscripción de equipos...")
 
-	#teams = pickle.loads(client.recv(1024))
-	print("Team received!")
-
-	teams = [
-		Team("test 1", 0),
-		Team("test 2", 0),
-		Team("test 3", 0),
-		Team("test 4", 0),
-		Team("test 5", 0),
-		Team("test 6", 0),
-		Team("test 7", 0),
-		Team("test 8", 0),
-		Team("test 9", 0),
-		Team("test 10", 0),
-	]
+	teams = pickle.loads(client.recv(1024))
+	print("Equipos recibidos!")
 
 	teams = fill_teams_with_random_scores(teams)
-	# print_teams(teams)
+
 	(group1_fase1, group2_fase1) = divide_teams(teams)
 	group1_fase2 = second_fase(group1_fase1)
 	group2_fase2 = second_fase(group2_fase1)
@@ -88,10 +76,13 @@ while True:
 
 	champion = final(group1_fase3[0], group2_fase3[0])
 
-	# print(client.recv(1024).decode("utf-8"))
-	# client.send("Bye".encode("utf-8"))
+	print("Calculando ganador...")
+	sleep(2)
+
+	print(f"El equipo ganador del torneo es {champion.name}!")
+
+	client.send(champion.name.encode("utf-8"))
 
 	# Si queremos dejar de recibir mensajes en TCP, debemos
 	# cerrar la conexión explicitamente
-	# client.close()
-	break
+	client.close()
