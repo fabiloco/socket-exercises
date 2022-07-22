@@ -1,7 +1,11 @@
 # Punto 1 - 2
 
 ## intrucciones para ejecutar el ejercicio
-- Ejecutar el servidor con:
+- Instalar las dependencias con el siguiente comando:
+```
+	python -m pip install -U prettytable
+```
+- Ejecutar el servidor con el siguiente comando:
 ```
 	python server.py
 ```
