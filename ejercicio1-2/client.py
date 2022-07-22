@@ -24,4 +24,4 @@ employees = pickle.loads(encoded_message)
 for employee in employees:
 	table.add_row([employee.id, employee.name, int(employee.val_per_hour) * int(employee.hours_worked), employee.deduction_per])
 
-print(table)
+print(table.get_string(sortby="Cédula"))
